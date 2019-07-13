@@ -35,13 +35,13 @@ class LtdCmyrDemo extends CQApp {
     privateMsg(subType: string, msgId: number, fromQQ: number, msg: string, font: number): 0 | 1 {
         if (fromQQ === 996881204) {
             let res = '你发送了：' + msg
-            this.CQ.send_private_msg(fromQQ, res)
+            this.CQ.sendPrivateMsg(fromQQ, res)
         }
         return 0
     }
     groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): 0 | 1 {
         if (fromQQ === 996881204) {
-            this.CQ.send_group_msg(fromGroup, this.CQ.CQCode.at(fromQQ) + '你发送了：' + msg)
+            this.CQ.sendGroupMsg(fromGroup, this.CQ.CQCode.at(fromQQ) + '你发送了：' + msg)
         }
         return 0
     }
@@ -66,10 +66,10 @@ class LtdCmyrDemo extends CQApp {
     friendAdd(subType: string, sendTime: number, fromQQ: number): 0 | 1 {
         return 0
     }
-    requestFriendAdd(subType: string, sendTime: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
+    requestAddFriend(subType: string, sendTime: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
         return 0
     }
-    requestGroupAdd(subType: string, sendTime: number, fromGroup: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
+    requestAddGroup(subType: string, sendTime: number, fromGroup: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
         return 0
     }
 
@@ -78,7 +78,7 @@ class LtdCmyrDemo extends CQApp {
 const ltdCmyrDemo = new LtdCmyrDemo()
 export { ltdCmyrDemo }
 /**
- *单文件启动时调试，如果不是单独调试请注释掉
+ *单文件启动时调试
  *
  */
 if (ltdCmyrDemo.CQ.getDebug()) {
