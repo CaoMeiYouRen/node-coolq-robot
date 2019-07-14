@@ -34,21 +34,21 @@ class LtdCmyrDemo extends CQApp {
     }
     privateMsg(subType: string, msgId: number, fromQQ: number, msg: string, font: number): 0 | 1 {
         if (fromQQ === 996881204) {
-            let res = '你发送了：' + msg
+            let res = `你发送了：${msg}`
             this.CQ.sendPrivateMsg(fromQQ, res)
         }
         return 0
     }
     groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): 0 | 1 {
         if (fromQQ === 996881204) {
-            this.CQ.sendGroupMsg(fromGroup, this.CQ.CQCode.at(fromQQ) + '你发送了：' + msg)
+            this.CQ.sendGroupMsg(fromGroup, `${this.CQ.CQCode.at(fromQQ)}你发送了：${msg}`)
         }
         return 0
     }
     discussMsg(subType: string, msgId: number, fromDiscuss: number, fromQQ: number, msg: string, font: number): 0 | 1 {
-        // if (fromDiscuss === 580771123) {
-        //     this.CQ.send_discuss_msg(fromDiscuss, new CQAt(fromQQ) + '你发送了：' + msg)
-        // }
+        if (fromQQ === 996881204) {
+            this.CQ.send_discuss_msg(fromDiscuss, `${this.CQ.CQCode.at(fromQQ)}你发送了：${msg}`)
+        }
         return 0
     }
     groupUpload(subType: string, sendTime: number, fromGroup: number, fromQQ: number, file: { id: string; name: string; size: number; busid: number; }): 0 | 1 {
@@ -78,7 +78,7 @@ class LtdCmyrDemo extends CQApp {
 const ltdCmyrDemo = new LtdCmyrDemo()
 export { ltdCmyrDemo }
 /**
- *单文件启动时调试
+ *仅在debug模式下执行，若不需要也可注释掉
  *
  */
 if (ltdCmyrDemo.CQ.getDebug()) {
