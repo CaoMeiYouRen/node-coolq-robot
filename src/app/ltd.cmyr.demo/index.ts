@@ -1,8 +1,8 @@
 // import * as CQ from '../../bin/CQ.old'
-import { CQApp } from 'cq-robot'
+import { CQApp, CQFile } from 'cq-robot'
 import fs = require('fs')
 import path = require('path')
-class LtdCmyrDemo extends CQApp {
+class App extends CQApp {
     constructor() {
         super('ltd.cmyr.demo', __dirname)
         this.CQ.setDebug(true)
@@ -32,55 +32,53 @@ class LtdCmyrDemo extends CQApp {
         this.isEnable = false
         return 0
     }
-    privateMsg(subType: string, msgId: number, fromQQ: number, msg: string, font: number): 0 | 1 {
+    async privateMsg(subType: string, msgId: number, fromQQ: number, msg: string, font: number): Promise<0 | 1> {
         if (fromQQ === 996881204) {
-            let res = `你发送了：${msg}`
-            this.CQ.sendPrivateMsg(fromQQ, res)
+            this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`)
+        }
+        return 1
+    }
+    async groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): Promise<0 | 1> {
+        if (fromQQ === 996881204) {
+            this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
         }
         return 0
     }
-    groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): 0 | 1 {
+    async discussMsg(subType: string, msgId: number, fromDiscuss: number, fromQQ: number, msg: string, font: number): Promise<0 | 1> {
         if (fromQQ === 996881204) {
-            this.CQ.sendGroupMsg(fromGroup, `${this.CQ.CQCode.at(fromQQ)}你发送了：${msg}`)
+            this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         }
         return 0
     }
-    discussMsg(subType: string, msgId: number, fromDiscuss: number, fromQQ: number, msg: string, font: number): 0 | 1 {
-        if (fromQQ === 996881204) {
-            this.CQ.send_discuss_msg(fromDiscuss, `${this.CQ.CQCode.at(fromQQ)}你发送了：${msg}`)
-        }
+    async groupUpload(subType: string, sendTime: number, fromGroup: number, fromQQ: number, file: CQFile): Promise<0 | 1> {
         return 0
     }
-    groupUpload(subType: string, sendTime: number, fromGroup: number, fromQQ: number, file: { id: string; name: string; size: number; busid: number; }): 0 | 1 {
+    async groupAdmin(subType: string, sendTime: number, fromGroup: number, beingOperateQQ: number): Promise<0 | 1> {
         return 0
     }
-    groupAdmin(subType: string, sendTime: number, fromGroup: number, beingOperateQQ: number): 0 | 1 {
+    async groupDecrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): Promise<0 | 1> {
         return 0
     }
-    groupDecrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): 0 | 1 {
+    async groupIncrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): Promise<0 | 1> {
         return 0
     }
-    groupIncrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): 0 | 1 {
+    async friendAdd(subType: string, sendTime: number, fromQQ: number): Promise<0 | 1> {
         return 0
     }
-    friendAdd(subType: string, sendTime: number, fromQQ: number): 0 | 1 {
+    async requestAddFriend(subType: string, sendTime: number, fromQQ: number, msg: string, responseFlag: string): Promise<0 | 1> {
         return 0
     }
-    requestAddFriend(subType: string, sendTime: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
+    async requestAddGroup(subType: string, sendTime: number, fromGroup: number, fromQQ: number, msg: string, responseFlag: string): Promise<0 | 1> {
         return 0
     }
-    requestAddGroup(subType: string, sendTime: number, fromGroup: number, fromQQ: number, msg: string, responseFlag: string): 0 | 1 {
-        return 0
-    }
-
 
 }
-const ltdCmyrDemo = new LtdCmyrDemo()
-export { ltdCmyrDemo }
+const app = new App()//类名可以随意
+export { app }//导出模块的名称必须为app
 /**
  *仅在debug模式下执行，若不需要也可注释掉
  *
  */
-if (ltdCmyrDemo.CQ.getDebug()) {
-    ltdCmyrDemo.debug()
+if (app.CQ.getDebug()) {
+    app.debug()
 }

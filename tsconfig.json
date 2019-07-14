@@ -4,6 +4,7 @@
         "target": "es6", //目标代码类型
         "noImplicitAny": false, //在表达式和声明上有隐含的'any'类型时报错。
         "allowJs": true, //允许编译js文件
+        //"checkJs": true, //在 .js文件中报告错误。与 --allowJs配合使用。
         "sourceMap": false, //用于debug
         "rootDir": "./src", //仅用来控制输出的目录结构--outDir。
         "outDir": "./dist", //重定向输出目录。
