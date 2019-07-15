@@ -13,12 +13,13 @@ class App extends cq_robot_1.CQApp {
     constructor() {
         super('com.example.js.demo', __dirname);
         this.CQ.setDebug(false);
+        this.isEnable = true;
     }
     debug() {
         //本函数里面的内容仅会在debug模式下执行
-        this.privateMsg('test', 1, 996881204, '这是一条私聊消息', 1);
-        this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1);
-        this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1);
+        this.privateMsg('test', 1, 10001, '这是一条私聊消息', 1);
+        this.groupMsg('test', 1, 10001, 10001, '', '这是一条群消息', 1);
+        this.discussMsg('test', 1, 10001, 10001, '这是一条讨论组消息', 1);
     }
     startup() {
         return 0;
@@ -45,13 +46,13 @@ class App extends cq_robot_1.CQApp {
     }
     groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`);
+            //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
             return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     discussMsg(subType, msgId, fromDiscuss, fromQQ, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`);
+            //this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
             return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }

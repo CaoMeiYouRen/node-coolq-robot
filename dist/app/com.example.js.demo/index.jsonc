@@ -1,10 +1,9 @@
 // 酷Q 的Json文件支持以 // 开头的注释。
-// 打包前，应用的 .dll, .json 的文件名须以appid命名，应用appInfo返回的内容须改为appid
-// 如 appid=com.example.demo, 则dll及json文件需分别命名为 com.example.demo.dll、com.example.demo.json
+// 如 appid=com.example.demo 具体规则见规则见https://d.cqp.me/Pro/%E5%BC%80%E5%8F%91/%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF
 {
     "ret": 1, // 返回码，固定为1
     "apiver": 9, // Api版本本sdk为9
-    "name": "酷Q_node_robot_demo", // 应用名称
+    "name": "酷Q_node_robot_js_demo", // 应用名称
     "version": "1.0.0", // 应用版本
     "version_id": 1, // 应用顺序版本（每次发布时至少+1）
     "author": "Example", // 应用作者
@@ -15,7 +14,7 @@
             "type": 21, // 事件类型
             "name": "私聊消息处理", // 事件名称
             "function": "privateMsg", // 事件对应函数
-            "priority": 20000 // 事件优先级(参见 cq.im/deveventpriority)
+            "priority": 30000 // 事件优先级(参见 cq.im/deveventpriority)
         },
         {
             "id": 2,

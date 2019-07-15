@@ -1,6 +1,6 @@
 {
     "name": "coolq-robot",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "基于http-api、cq-websocket、cq-robot的酷Q机器人封装",
     "main": "index.js",
     "scripts": {
@@ -11,16 +11,17 @@
         "lint:create": "eslint --init",
         "test": "mocha -r ts-node/register test/**/*.test.ts -R nyan",
         "uninstall": "rimraf node_modules",
-        "start": "nodemon dist"
+        "start": "npm run build && nodemon dist"
     },
     "author": "CaoMeiYouRen",
     "license": "ISC",
     "dependencies": {
-        "cq-robot": "^0.7.2",
+        "cq-robot": "^0.7.3",
         "cq-websocket": "^2.0.1",
         "json5": "^2.1.0",
         "log4js": "^4.4.0",
         "moment": "^2.24.0",
+        "pm2": "^3.5.1",
         "ts-node": "^8.3.0"
     },
     "devDependencies": {
@@ -38,6 +39,7 @@
         "gulp": "^4.0.2",
         "json5": "^2.1.0",
         "mocha": "^6.1.4",
+        "nodemon": "^1.19.1",
         "nyc": "^14.1.1",
         "should": "^13.2.3",
         "typescript": "^3.5.2",

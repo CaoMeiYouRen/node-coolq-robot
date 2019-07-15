@@ -8,7 +8,7 @@ const bot: CQWebSocket = CQWebSocketInit(getCQWebSocketOption(__dirname))
 const app = loadApp(path.join(__dirname, 'app'))//载入全体插件
 app.forEach((key) => {
     key.startup()
-    printTime(`[应用] ${key.APP_ID}已载入`, CQLog.LOG_INFO_SUCCESS)
+    printTime(`[应用] ${key.APP_ID} 已载入`, CQLog.LOG_INFO_SUCCESS)
 })
 bot.on('ready', () => {
     printTime('[WebSocket] 连接成功！', CQLog.LOG_INFO)

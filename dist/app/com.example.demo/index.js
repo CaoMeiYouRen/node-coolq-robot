@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import * as CQ from '../../bin/CQ.old'
 const cq_robot_1 = require("cq-robot");
 class App extends cq_robot_1.CQApp {
     constructor() {
@@ -17,10 +16,9 @@ class App extends cq_robot_1.CQApp {
         this.isEnable = true; //注意，只有isEnable为true的插件才会载入，可以将isEnable置为false不载入某插件
     }
     debug() {
-        // console.log('debug()方法只会在debug模式下执行')
-        this.privateMsg('test', 1, 996881204, '这是一条私聊消息', 1);
-        this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1);
-        this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1);
+        this.privateMsg('test', 1, 10001, '这是一条私聊消息', 1);
+        this.groupMsg('test', 1, 10001, 10001, '', '这是一条群消息', 1);
+        this.discussMsg('test', 1, 10001, 10001, '这是一条讨论组消息', 1);
     }
     /**
      * 本函数会在连接建立前执行，可以在此执行初始化代码
@@ -81,10 +79,8 @@ class App extends cq_robot_1.CQApp {
      */
     privateMsg(subType, msgId, fromQQ, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (fromQQ === 996881204) {
-                this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`);
-            }
-            return cq_robot_1.CQMsg.MSG_INTERCEPT;
+            this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`);
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     /**
@@ -102,9 +98,7 @@ class App extends cq_robot_1.CQApp {
     */
     groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (fromQQ === 996881204) {
-                this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`);
-            }
+            //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
             return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
@@ -122,9 +116,7 @@ class App extends cq_robot_1.CQApp {
     */
     discussMsg(subType, msgId, fromDiscuss, fromQQ, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (fromQQ === 996881204) {
-                this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`);
-            }
+            // this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
             return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }

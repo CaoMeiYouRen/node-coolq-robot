@@ -32,3 +32,4 @@ ssl
 *.pem
 sessions
 /test
+*.assets

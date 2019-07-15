@@ -14,7 +14,7 @@
             "type": 21, // 事件类型
             "name": "私聊消息处理", // 事件名称
             "function": "privateMsg", // 事件对应函数
-            "priority": 20000 // 事件优先级(参见 cq.im/deveventpriority)
+            "priority": 30000 // 事件优先级(参见 cq.im/deveventpriority)
         },
         {
             "id": 2,

@@ -77,12 +77,10 @@ export function loadApp(filePath: string): Array<CQApp> {
         let fileName = files[i]
         var fileDir = path.join(filePath, fileName)
         if (fileName !== 'index.js') {
-            ///console.log(fileDir)
             let temp = require(fileDir)// 载入所有插件
             let app: CQApp = temp['app']
             if (checkApp(app)) {
                 list.push(app)
-                printTime(`[应用] ${app.APP_ID} 已载入`, CQLog.LOG_INFO)
             }
         }
     }

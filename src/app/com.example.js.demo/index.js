@@ -3,12 +3,13 @@ class App extends CQApp {
     constructor() {
         super('com.example.js.demo', __dirname)
         this.CQ.setDebug(false)
+        this.isEnable = true
     }
     debug() {
         //本函数里面的内容仅会在debug模式下执行
-        this.privateMsg('test', 1, 996881204, '这是一条私聊消息', 1)
-        this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1)
-        this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1)
+        this.privateMsg('test', 1, 10001, '这是一条私聊消息', 1)
+        this.groupMsg('test', 1, 10001, 10001, '', '这是一条群消息', 1)
+        this.discussMsg('test', 1, 10001, 10001, '这是一条讨论组消息', 1)
     }
     startup() {
         return 0
@@ -32,11 +33,11 @@ class App extends CQApp {
         return CQMsg.MSG_IGNORE
     }
     async   groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
-        this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
+        //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     async  discussMsg(subType, msgId, fromDiscuss, fromQQ, msg, font) {
-        this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
+        //this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     async  groupUpload(subType, sendTime, fromGroup, fromQQ, file) {

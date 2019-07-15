@@ -1,7 +1,4 @@
-// import * as CQ from '../../bin/CQ.old'
 import { CQApp, CQFile, CQMsg } from 'cq-robot'
-import fs = require('fs')
-import path = require('path')
 class App extends CQApp {
     constructor() {
         super('com.example.demo', __dirname)
@@ -9,10 +6,9 @@ class App extends CQApp {
         this.isEnable = true//注意，只有isEnable为true的插件才会载入，可以将isEnable置为false不载入某插件
     }
     debug(): void {
-        // console.log('debug()方法只会在debug模式下执行')
-        this.privateMsg('test', 1, 996881204, '这是一条私聊消息', 1)
-        this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1)
-        this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1)
+        this.privateMsg('test', 1, 10001, '这是一条私聊消息', 1)
+        this.groupMsg('test', 1, 10001, 10001, '', '这是一条群消息', 1)
+        this.discussMsg('test', 1, 10001, 10001, '这是一条讨论组消息', 1)
     }
     /**
      * 本函数会在连接建立前执行，可以在此执行初始化代码
@@ -72,10 +68,8 @@ class App extends CQApp {
      * 如果不回复消息，交由之后的应用/过滤器处理，这里 返回 0 | CQMsg.MSG_IGNORE - 忽略本条消息
      */
     async privateMsg(subType: string, msgId: number, fromQQ: number, msg: string, font: number): Promise<0 | 1> {
-        if (fromQQ === 996881204) {
-            this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`)
-        }
-        return CQMsg.MSG_INTERCEPT
+        this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`)
+        return CQMsg.MSG_IGNORE
     }
     /**
     *
@@ -91,9 +85,7 @@ class App extends CQApp {
     *
     */
     async groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): Promise<0 | 1> {
-        if (fromQQ === 996881204) {
-            this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
-        }
+        //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     /**
@@ -109,9 +101,7 @@ class App extends CQApp {
     *
     */
     async discussMsg(subType: string, msgId: number, fromDiscuss: number, fromQQ: number, msg: string, font: number): Promise<0 | 1> {
-        if (fromQQ === 996881204) {
-            this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
-        }
+        // this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     /**
