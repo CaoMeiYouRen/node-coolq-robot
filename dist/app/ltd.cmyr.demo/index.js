@@ -14,6 +14,7 @@ class App extends cq_robot_1.CQApp {
     constructor() {
         super('ltd.cmyr.demo', __dirname);
         this.CQ.setDebug(false);
+        this.isEnable = true; //注意，只有isEnable为true的插件才会载入，可以将isEnable置为false不载入某插件
     }
     debug() {
         // console.log('debug()方法只会在debug模式下执行')
@@ -21,16 +22,47 @@ class App extends cq_robot_1.CQApp {
         this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1);
         this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1);
     }
+    /**
+     * 本函数会在连接建立前执行，可以在此执行初始化代码
+     *
+     * @author CaoMeiYouRen
+     * @date 2019-07-15
+     * @returns {0}
+     * @memberof App
+     */
     startup() {
         return 0;
     }
+    /**
+     *本函数会在连接断开后执行，请在此执行插件退出代码
+     *
+     * @author CaoMeiYouRen
+     * @date 2019-07-15
+     * @returns {0}
+     * @memberof App
+     */
     exit() {
         return 0;
     }
+    /**
+     * 本函数会在连接建立后立刻执行，可以在此执行初始化代码
+     *
+     * @author CaoMeiYouRen
+     * @date 2019-07-15
+     * @returns {0}
+     * @memberof App
+     */
     enable() {
-        this.isEnable = true;
         return 0;
     }
+    /**
+     * 本函数会在连接断开前执行，可以在此执行插件退出代码
+     *
+     * @author CaoMeiYouRen
+     * @date 2019-07-15
+     * @returns {0}
+     * @memberof App
+     */
     disable() {
         this.isEnable = false;
         return 0;

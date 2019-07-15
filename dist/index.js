@@ -13,9 +13,10 @@ const path = require("path");
 const help_1 = require("./utils/help");
 const bot = cq_robot_1.CQWebSocketInit(help_1.getCQWebSocketOption(__dirname));
 const app = help_1.loadApp(path.join(__dirname, 'app')); //载入全体插件
-// app.forEach((key) => {
-//
-// })
+app.forEach((key) => {
+    key.startup();
+    cq_robot_1.printTime(`[应用] ${key.APP_ID}已载入`, cq_robot_1.CQLog.LOG_INFO_SUCCESS);
+});
 bot.on('ready', () => {
     cq_robot_1.printTime('[WebSocket] 连接成功！', cq_robot_1.CQLog.LOG_INFO);
     app.forEach((key) => {
@@ -168,12 +169,13 @@ bot.on('socket.closing', (attempts) => {
     app.forEach((key) => {
         if (key.isEnable) {
             key.disable();
-            cq_robot_1.printTime(`[应用] ${key.APP_ID}已关闭`, cq_robot_1.CQLog.LOG_INFO);
+            cq_robot_1.printTime(`[应用] ${key.APP_ID}已停用`, cq_robot_1.CQLog.LOG_INFO);
         }
     });
 });
 bot.on('socket.close', (socketType, attempts) => {
+    app.forEach((key) => {
+        key.exit();
+        cq_robot_1.printTime(`[应用] ${key.APP_ID}已关闭`, cq_robot_1.CQLog.LOG_INFO);
+    });
 });
-// setTimeout(() => {
-//     bot.disconnect()
-// }, 10000)

@@ -113,5 +113,8 @@ function checkApp(app) {
         cq_robot_1.printTime(`[应用]${app.APP_ID}的HTTP_API版本不为4`, cq_robot_1.CQLog.LOG_ERROR);
         return false;
     }
+    if (!app.isEnable) { //应用未启用
+        return false;
+    }
     return true;
 }

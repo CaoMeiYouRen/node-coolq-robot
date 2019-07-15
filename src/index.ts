@@ -1,5 +1,4 @@
 import { CQWebSocketInit, printTime, CQLog } from 'cq-robot'
-/* eslint-disable guard-for-in */
 import fs = require('fs')
 import path = require('path')
 import JSON5 = require('json5')
@@ -7,9 +6,10 @@ import { CQWebSocket } from 'cq-websocket'
 import { getCQWebSocketOption, loadApp, sortApp } from './utils/help'
 const bot: CQWebSocket = CQWebSocketInit(getCQWebSocketOption(__dirname))
 const app = loadApp(path.join(__dirname, 'app'))//载入全体插件
-// app.forEach((key) => {
-//
-// })
+app.forEach((key) => {
+    key.startup()
+    printTime(`[应用] ${key.APP_ID}已载入`, CQLog.LOG_INFO_SUCCESS)
+})
 bot.on('ready', () => {
     printTime('[WebSocket] 连接成功！', CQLog.LOG_INFO)
     app.forEach((key) => {
@@ -142,14 +142,14 @@ bot.on('socket.closing', (attempts) => {
     app.forEach((key) => {
         if (key.isEnable) {
             key.disable()
-            printTime(`[应用] ${key.APP_ID}已关闭`, CQLog.LOG_INFO)
+            printTime(`[应用] ${key.APP_ID}已停用`, CQLog.LOG_INFO)
         }
     })
 })
 bot.on('socket.close', (socketType, attempts) => {
-
+    app.forEach((key) => {
+        key.exit()
+        printTime(`[应用] ${key.APP_ID}已关闭`, CQLog.LOG_INFO)
+    })
 })
-// setTimeout(() => {
-//     bot.disconnect()
-// }, 10000)
 

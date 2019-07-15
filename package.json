@@ -16,7 +16,7 @@
     "author": "CaoMeiYouRen",
     "license": "ISC",
     "dependencies": {
-        "cq-robot": "^0.7.0",
+        "cq-robot": "^0.7.2",
         "cq-websocket": "^2.0.1",
         "got": "^9.6.0",
         "json5": "^2.1.0",
