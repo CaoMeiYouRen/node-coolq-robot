@@ -1,12 +1,11 @@
-// import * as CQ from '../../bin/CQ.old'
 import { CQApp, CQMsg } from 'cq-robot'
-// LtdCmyrJsDemo
 class App extends CQApp {
     constructor() {
         super('ltd.cmyr.js.demo', __dirname)
-        this.CQ.setDebug(true)
+        this.CQ.setDebug(false)
     }
     debug() {
+        //本函数里面的内容仅会在debug模式下执行
         this.privateMsg('test', 1, 996881204, '这是一条私聊消息', 1)
         this.groupMsg('test', 1, 947983200, 996881204, '', '这是一条群消息', 1)
         this.discussMsg('test', 1, 580771123, 996881204, '这是一条讨论组消息', 1)
@@ -26,22 +25,18 @@ class App extends CQApp {
         return 0
     }
     async  privateMsg(subType, msgId, fromQQ, msg, font) {
-        if (fromQQ === 996881204) {
-            let res = `这是${this.APP_ID}，你发送了：${msg}`
-            this.CQ.sendPrivateMsg(fromQQ, res)
-        }
+        let res = `这是${this.APP_ID}，你发送了：${msg}`
+        this.CQ.sendPrivateMsg(fromQQ, res)
+        // 如果要回复消息，请调用 api 发送，则 return CQMsg.MSG_INTERCEPT - 拦截本条消息，不再由其他应用继续处理 //注意：应用优先级设置为"最高"(10000)时，无法使用本返回值
+        // 如果不回复消息，交由之后的应用处理，则 return CQMsg.MSG_IGNORE - 忽略本条消息
         return CQMsg.MSG_IGNORE
     }
     async   groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
-        if (fromQQ === 996881204) {
-            this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
-        }
-        return 1
+        this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
+        return CQMsg.MSG_IGNORE
     }
     async  discussMsg(subType, msgId, fromDiscuss, fromQQ, msg, font) {
-        if (fromQQ === 996881204) {
-            this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
-        }
+        this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     async  groupUpload(subType, sendTime, fromGroup, fromQQ, file) {
