@@ -1,9 +1,9 @@
 {
-    "accessToken": "B8BE617E6EC9F72BE6892B922204BC40", // API 访问 token 。见 CQHTTP API 之配置文件说明
+    "accessToken": "", // API 访问 token 。见 CQHTTP API 之配置文件说明
     "enableAPI": true, // 启用 /api 连线
     "enableEvent": true, // 启用 /event 连线
     "protocol": "ws:", // 协议名
-    "host": "111.231.70.237", // '127.0.0.1' 酷Q服务器 IP
+    "host": "127.0.0.1", // '127.0.0.1' 酷Q服务器 IP
     "port": 6700, // 酷Q服务器端口
     "baseUrl": "", // 酷Q服务器位址 (SDK在建立连线时会依照此设定加上前缀项 ws:// 及后缀项 `/<api
     "qq": -1, // 触发 @me 事件用的QQ帐号，通常同登入酷Q之帐号，用在讨论组消息及群消息中辨认是否有人at此帐号

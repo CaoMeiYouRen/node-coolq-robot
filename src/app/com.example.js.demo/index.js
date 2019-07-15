@@ -1,7 +1,7 @@
 import { CQApp, CQMsg } from 'cq-robot'
 class App extends CQApp {
     constructor() {
-        super('ltd.cmyr.js.demo', __dirname)
+        super('com.example.js.demo', __dirname)
         this.CQ.setDebug(false)
     }
     debug() {

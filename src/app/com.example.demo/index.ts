@@ -4,7 +4,7 @@ import fs = require('fs')
 import path = require('path')
 class App extends CQApp {
     constructor() {
-        super('ltd.cmyr.demo', __dirname)
+        super('com.example.demo', __dirname)
         this.CQ.setDebug(false)
         this.isEnable = true//注意，只有isEnable为true的插件才会载入，可以将isEnable置为false不载入某插件
     }
