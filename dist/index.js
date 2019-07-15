@@ -17,7 +17,7 @@ const app = help_1.loadApp(path.join(__dirname, 'app')); //载入全体插件
 //
 // })
 bot.on('ready', () => {
-    cq_robot_1.printTime('[WebSocket] 连接成功！');
+    cq_robot_1.printTime('[WebSocket] 连接成功！', cq_robot_1.CQLog.LOG_INFO);
     app.forEach((key) => {
         key.enable();
         cq_robot_1.printTime(`[应用] ${key.APP_ID}已启动`, cq_robot_1.CQLog.LOG_INFO_SUCCESS);

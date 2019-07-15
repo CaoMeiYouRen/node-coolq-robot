@@ -11,7 +11,7 @@ const app = loadApp(path.join(__dirname, 'app'))//载入全体插件
 //
 // })
 bot.on('ready', () => {
-    printTime('[WebSocket] 连接成功！')
+    printTime('[WebSocket] 连接成功！', CQLog.LOG_INFO)
     app.forEach((key) => {
         key.enable()
         printTime(`[应用] ${key.APP_ID}已启动`, CQLog.LOG_INFO_SUCCESS)

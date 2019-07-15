@@ -10,12 +10,13 @@
         "lint:fix": "eslint src --fix",
         "lint:create": "eslint --init",
         "test": "mocha -r ts-node/register test/**/*.test.ts -R nyan",
-        "uninstall": "rimraf node_modules"
+        "uninstall": "rimraf node_modules",
+        "start": "nodemon dist"
     },
     "author": "CaoMeiYouRen",
     "license": "ISC",
     "dependencies": {
-        "cq-robot": "^0.5.0",
+        "cq-robot": "^0.7.0",
         "cq-websocket": "^2.0.1",
         "got": "^9.6.0",
         "json5": "^2.1.0",

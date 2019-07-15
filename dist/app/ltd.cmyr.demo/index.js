@@ -13,7 +13,7 @@ const cq_robot_1 = require("cq-robot");
 class App extends cq_robot_1.CQApp {
     constructor() {
         super('ltd.cmyr.demo', __dirname);
-        this.CQ.setDebug(true);
+        this.CQ.setDebug(false);
     }
     debug() {
         // console.log('debug()方法只会在debug模式下执行')
@@ -45,7 +45,9 @@ class App extends cq_robot_1.CQApp {
             if (fromQQ === 996881204) {
                 this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`);
             }
-            return 1;
+            // 如果要回复消息，请调用 api 发送，则 return CQMsg.MSG_INTERCEPT - 拦截本条消息，不再由其他应用继续处理 //注意：应用优先级设置为"最高"(10000)时，无法使用本返回值
+            // 如果不回复消息，交由之后的应用处理，则 return CQMsg.MSG_IGNORE- 忽略本条消息
+            return cq_robot_1.CQMsg.MSG_INTERCEPT;
         });
     }
     groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
@@ -53,7 +55,7 @@ class App extends cq_robot_1.CQApp {
             if (fromQQ === 996881204) {
                 this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`);
             }
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     discussMsg(subType, msgId, fromDiscuss, fromQQ, msg, font) {
@@ -61,42 +63,42 @@ class App extends cq_robot_1.CQApp {
             if (fromQQ === 996881204) {
                 this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`);
             }
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     groupUpload(subType, sendTime, fromGroup, fromQQ, file) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     groupAdmin(subType, sendTime, fromGroup, beingOperateQQ) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     groupDecrease(subType, sendTime, fromGroup, fromQQ, beingOperateQQ) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     groupIncrease(subType, sendTime, fromGroup, fromQQ, beingOperateQQ) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     friendAdd(subType, sendTime, fromQQ) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     requestAddFriend(subType, sendTime, fromQQ, msg, responseFlag) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
     requestAddGroup(subType, sendTime, fromGroup, fromQQ, msg, responseFlag) {
         return __awaiter(this, void 0, void 0, function* () {
-            return 0;
+            return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
 }
@@ -104,7 +106,7 @@ const app = new App(); //类名可以随意
 exports.app = app;
 /**
  *仅在debug模式下执行，若不需要也可注释掉
- *
+ *请注意，因为debug的内容在此处就会执行，因此是最先执行的内容！
  */
 if (app.CQ.getDebug()) {
     app.debug();

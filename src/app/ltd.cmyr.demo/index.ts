@@ -1,11 +1,11 @@
 // import * as CQ from '../../bin/CQ.old'
-import { CQApp, CQFile } from 'cq-robot'
+import { CQApp, CQFile, CQMsg } from 'cq-robot'
 import fs = require('fs')
 import path = require('path')
 class App extends CQApp {
     constructor() {
         super('ltd.cmyr.demo', __dirname)
-        this.CQ.setDebug(true)
+        this.CQ.setDebug(false)
     }
     debug(): void {
         // console.log('debug()方法只会在debug模式下执行')
@@ -36,40 +36,42 @@ class App extends CQApp {
         if (fromQQ === 996881204) {
             this.CQ.sendPrivateMsg(fromQQ, `这是${this.APP_ID}，你发送了：${msg}`)
         }
-        return 1
+        // 如果要回复消息，请调用 api 发送，则 return CQMsg.MSG_INTERCEPT - 拦截本条消息，不再由其他应用继续处理 //注意：应用优先级设置为"最高"(10000)时，无法使用本返回值
+        // 如果不回复消息，交由之后的应用处理，则 return CQMsg.MSG_IGNORE- 忽略本条消息
+        return CQMsg.MSG_INTERCEPT
     }
     async groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): Promise<0 | 1> {
         if (fromQQ === 996881204) {
             this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
         }
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async discussMsg(subType: string, msgId: number, fromDiscuss: number, fromQQ: number, msg: string, font: number): Promise<0 | 1> {
         if (fromQQ === 996881204) {
             this.CQ.sendDiscussMsg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         }
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async groupUpload(subType: string, sendTime: number, fromGroup: number, fromQQ: number, file: CQFile): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async groupAdmin(subType: string, sendTime: number, fromGroup: number, beingOperateQQ: number): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async groupDecrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async groupIncrease(subType: string, sendTime: number, fromGroup: number, fromQQ: number, beingOperateQQ: number): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async friendAdd(subType: string, sendTime: number, fromQQ: number): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async requestAddFriend(subType: string, sendTime: number, fromQQ: number, msg: string, responseFlag: string): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async requestAddGroup(subType: string, sendTime: number, fromGroup: number, fromQQ: number, msg: string, responseFlag: string): Promise<0 | 1> {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
 
 }
@@ -77,7 +79,7 @@ const app = new App()//类名可以随意
 export { app }//导出模块的名称必须为app
 /**
  *仅在debug模式下执行，若不需要也可注释掉
- *
+ *请注意，因为debug的内容在此处就会执行，因此是最先执行的内容！
  */
 if (app.CQ.getDebug()) {
     app.debug()

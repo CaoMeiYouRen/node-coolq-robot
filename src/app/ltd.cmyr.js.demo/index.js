@@ -1,5 +1,5 @@
 // import * as CQ from '../../bin/CQ.old'
-import { CQApp } from 'cq-robot'
+import { CQApp, CQMsg } from 'cq-robot'
 // LtdCmyrJsDemo
 class App extends CQApp {
     constructor() {
@@ -30,7 +30,7 @@ class App extends CQApp {
             let res = `这是${this.APP_ID}，你发送了：${msg}`
             this.CQ.sendPrivateMsg(fromQQ, res)
         }
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async   groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
         if (fromQQ === 996881204) {
@@ -42,35 +42,35 @@ class App extends CQApp {
         if (fromQQ === 996881204) {
             this.CQ.send_discuss_msg(fromDiscuss, `这是${this.APP_ID}，你发送了：${msg}`)
         }
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async  groupUpload(subType, sendTime, fromGroup, fromQQ, file) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async groupAdmin(subType, sendTime, fromGroup, beingOperateQQ) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async  groupDecrease(subType, sendTime, fromGroup, fromQQ, beingOperateQQ) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async  groupIncrease(subType, sendTime, fromGroup, fromQQ, beingOperateQQ) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async  friendAdd(subType, sendTime, fromQQ) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async requestAddFriend(subType, sendTime, fromQQ, msg, responseFlag) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
     async requestAddGroup(subType, sendTime, fromGroup, fromQQ, msg, responseFlag) {
-        return 0
+        return CQMsg.MSG_IGNORE
     }
 }
 const app = new App()//类名可以随意
 export { app }//导出模块的名称必须为app
 /**
  *仅在debug模式下执行，若不需要也可注释掉
- *
+ *请注意，因为debug的内容在此处就会执行，因此是最先执行的内容！
  */
 if (app.CQ.getDebug()) {
     app.debug()
