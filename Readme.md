@@ -35,9 +35,9 @@
     git clone https://github.com/CaoMeiYouRen/node-coolq-robot.git
     ```
 
-2.  修改src/conf/setting.jsonc中的**accessToken**【重要】，其他参数可以默认
+2.  修改src/conf/setting.jsonc中的**accessToken**【重要】，其他参数可以默认（关于该配置，详见[CoolQ HTTP API配置](https://cqhttp.cc/docs/4.10/#/Configuration)）
 
-3.  酷Q安装coolq-http-api，修改 酷Q Pro\data\app\io.github.richardchien.coolqhttpapi\config 下的相关配置，其中access_token与上方accessToken保持一致
+3.  酷Q安装coolq-http-api，修改 酷Q Pro\data\app\io.github.richardchien.coolqhttpapi\config 下的相关配置，其中access_token与上方accessToken保持一致（关于该配置，详见[CQWebSocketOption](https://github.com/momocow/node-cq-websocket/blob/master/docs/api/CQWebSocket.md)）
 
 4.  酷Q启动coolq-http-api，注意，如果修改access_token时插件已启用，请重载应用或重启酷Q
 
