@@ -43,7 +43,7 @@
 
 7.  在控制台查看效果（如果出现 [WebSocket] 连接成功 即为成功）
 
-8.  控制台效果
+8.  演示效果
 
     ![image](https://wx3.sinaimg.cn/mw690/006W7JQLly1g50s3grxlrj314d09pn0r.jpg)
 
