@@ -103,3 +103,8 @@ if (app.CQ.getDebug()) {
 
 **coolq-http-api : https://github.com/richardchien/coolq-http-api**
 
+## 项目参考
+
+**JCQ-CoolQ : https://github.com/Meowya/JCQ-CoolQ**
+
+（本项目在开发中很大程度上借鉴了JCQ的思路，在此表示感谢）
