@@ -77,12 +77,10 @@ export function loadApp(filePath: string): Array<CQApp> {
         let fileName = files[i]
         var fileDir = path.join(filePath, fileName)
         if (fileName !== 'index.js') {
-            ///console.log(fileDir)
             let temp = require(fileDir)// 载入所有插件
             let app: CQApp = temp['app']
             if (checkApp(app)) {
                 list.push(app)
-                printTime(`[应用] ${app.APP_ID} 已载入`, CQLog.LOG_INFO)
             }
         }
     }
@@ -107,6 +105,9 @@ function checkApp(app: CQApp): boolean {
     }
     if (app.HTTP_API_VER !== 4) {
         printTime(`[应用]${app.APP_ID}的HTTP_API版本不为4`, CQLog.LOG_ERROR)
+        return false
+    }
+    if (!app.isEnable) {//应用未启用
         return false
     }
     return true

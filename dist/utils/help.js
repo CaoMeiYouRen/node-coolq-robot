@@ -80,12 +80,10 @@ function loadApp(filePath) {
         let fileName = files[i];
         var fileDir = path.join(filePath, fileName);
         if (fileName !== 'index.js') {
-            ///console.log(fileDir)
             let temp = require(fileDir); // 载入所有插件
             let app = temp['app'];
             if (checkApp(app)) {
                 list.push(app);
-                cq_robot_1.printTime(`[应用] ${app.APP_ID} 已载入`, cq_robot_1.CQLog.LOG_INFO);
             }
         }
     }
@@ -111,6 +109,9 @@ function checkApp(app) {
     }
     if (app.HTTP_API_VER !== 4) {
         cq_robot_1.printTime(`[应用]${app.APP_ID}的HTTP_API版本不为4`, cq_robot_1.CQLog.LOG_ERROR);
+        return false;
+    }
+    if (!app.isEnable) { //应用未启用
         return false;
     }
     return true;

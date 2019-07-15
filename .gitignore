@@ -31,3 +31,5 @@ ssl
 *.key
 *.pem
 sessions
+/test
+*.assets
