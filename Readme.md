@@ -99,7 +99,7 @@ if (app.CQ.getDebug()) {
 
 ## 目前已知bug
 
-1.  [待修复]在使用pm2 start index.js --watch 运行时，会出现程序无限重启的问题
+1.  [待修复]在使用pm2 start index.js --watch 运行时，会出现程序无限重启的问题（已查明是日志的问题，写入日志导致触发pm2重启）
     -   解决办法：去掉--watch参数，不监视文件编号即可
 
 ## 项目依赖
