@@ -26,8 +26,9 @@
     -   index.ts 项目运行入口
 -   /dist 最终需要运行的文件
 
-
 ## 快速开始
+
+视频教程：https://www.bilibili.com/video/av59906186
 
 1.  clone本项目
 
