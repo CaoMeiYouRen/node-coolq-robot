@@ -85,7 +85,6 @@ class App extends CQApp {
     *
     */
     async groupMsg(subType: string, msgId: number, fromGroup: number, fromQQ: number, fromAnonymous: string, msg: string, font: number): Promise<0 | 1> {
-        //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
         return CQMsg.MSG_IGNORE
     }
     /**

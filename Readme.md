@@ -109,6 +109,8 @@ if (app.CQ.getDebug()) {
 
 **coolq-http-api : https://github.com/richardchien/coolq-http-api**
 
+**cq-robot:https://github.com/CaoMeiYouRen/node-cq-robot**
+
 ## 项目参考
 
 **JCQ-CoolQ : https://github.com/Meowya/JCQ-CoolQ**

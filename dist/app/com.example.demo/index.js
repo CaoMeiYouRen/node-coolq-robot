@@ -98,7 +98,6 @@ class App extends cq_robot_1.CQApp {
     */
     groupMsg(subType, msgId, fromGroup, fromQQ, fromAnonymous, msg, font) {
         return __awaiter(this, void 0, void 0, function* () {
-            //this.CQ.sendGroupMsg(fromGroup, `这是${this.APP_ID}，你发送了：${msg}`)
             return cq_robot_1.CQMsg.MSG_IGNORE;
         });
     }
