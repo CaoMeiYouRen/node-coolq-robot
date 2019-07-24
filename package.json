@@ -13,13 +13,13 @@
         "rm": "rimraf node_modules",
         "start": "npm run build && nodemon dist",
         "doc": "rimraf doc && gulp typedoc",
-        "mit": "git add . && git cz",
+        "mit": "git add . && git cz && git push",
         "cglog": "conventional-changelog -p angular -i CHANGELOG.md -s -p"
     },
     "author": "CaoMeiYouRen",
     "license": "ISC",
     "dependencies": {
-        "cq-robot": "^1.1.5",
+        "cq-robot": "^1",
         "cq-websocket": "^2.0.2",
         "json5": "^2.1.0",
         "log4js": "^4.4.0",
