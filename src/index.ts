@@ -152,4 +152,16 @@ bot.on('socket.close', (socketType, attempts) => {
         printTime(`[应用] ${key.APP_ID}已关闭`, CQLog.LOG_INFO)
     })
 })
-
+bot.on('meta_event.heartbeat', (context) => {//响应心跳连接
+    (async function () {
+        try {
+            let result = await bot('get_status')
+            printTime(`API调用测试：get_status:${result.status}`, CQLog.LOG_DEBUG)
+            if (result.status !== 'ok') {
+                printTime('发生了异常', CQLog.LOG_ERROR)
+            }
+        } catch (error) {
+            printTime('发生了异常', CQLog.LOG_ERROR)
+        }
+    }())
+})
