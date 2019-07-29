@@ -58,6 +58,15 @@
 
 ![image](https://wx2.sinaimg.cn/mw690/006W7JQLly1g50s3xkx9tj30kj05lwey.jpg)
 
+9.  **【重要】**近日在实际使用过程中发现WebSocket经常会出现断开的情况， 导致api调用失败。因此解决方法是开启心跳连接，在 酷Q端的coolq-http-api的配置中添加以下内容，开启心跳连接即可。
+
+    ```json
+    "enable_heartbeat": true,//开启心跳连接
+    "heartbeat_interval": 60000,//周期为60秒一次，也可以调大一些
+    ```
+
+    
+
 ## 安装插件
 
 1.  所有插件放在src/app目录下，新建一个由appId命名的文件夹（下称为应用根目录），入口文件必须为index.js/index.ts（编译后均为index.js），配置项为index.json或index.jsonc【关于jsonc需要特别解释下，就是支持注释的json，即VScode中的JSON with Comments格式】

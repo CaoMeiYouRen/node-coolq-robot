@@ -20,7 +20,7 @@
 
 ▸ **checkApp**(`app`: `CQApp`): *boolean*
 
-*Defined in [help.ts:97](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/7b8086d/src/utils/help.ts#L97)*
+*Defined in [help.ts:97](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/1e526a0/src/utils/help.ts#L97)*
 
 校验app是否合法
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **getCQWebSocketOption**(`dirname`: string): *`CQWebSocketOption`*
 
-*Defined in [help.ts:15](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/7b8086d/src/utils/help.ts#L15)*
+*Defined in [help.ts:15](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/1e526a0/src/utils/help.ts#L15)*
 
 获取CQWebSocket配置项
 
@@ -66,7 +66,7 @@ ___
 
 ▸ **getEvent**(`list`: `Array<CQEvent>`, `eventFunction`: string): *`CQEvent`*
 
-*Defined in [help.ts:33](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/7b8086d/src/utils/help.ts#L33)*
+*Defined in [help.ts:33](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/1e526a0/src/utils/help.ts#L33)*
 
 是否存在某事件的函数名
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **loadApp**(`filePath`: string): *`Array<CQApp>`*
 
-*Defined in [help.ts:73](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/7b8086d/src/utils/help.ts#L73)*
+*Defined in [help.ts:73](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/1e526a0/src/utils/help.ts#L73)*
 
 载入app目录下的所有插件
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **sortApp**(`list`: `Array<CQApp>`, `eventFunction`: string): *`Array<CQApp>`*
 
-*Defined in [help.ts:51](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/7b8086d/src/utils/help.ts#L51)*
+*Defined in [help.ts:51](https://github.com/CaoMeiYouRen/node-coolq-robot/blob/1e526a0/src/utils/help.ts#L51)*
 
 根据优先级从小到大对插件进行排序，如果某插件并未定义某事件，该插件将不参与排序，也不会接收到该事件
 
