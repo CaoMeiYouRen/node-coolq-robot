@@ -79,11 +79,11 @@ bot.on('notice.group_admin', (c) => {
     }())
 })
 bot.on('notice.group_decrease', (c) => {
-    printTime(`[群成员减少] 类型:${c.sub_type} GroupId:${c.group_id} 操作者QQ:${c.user_id} 被操作QQ:${c.operator_id}`, CQLog.LOG_INFO_RECV)
+    printTime(`[群成员减少] 类型:${c.sub_type} GroupId:${c.group_id} 操作者QQ:${c.operator_id} 离开者QQ:${c.user_id}`, CQLog.LOG_INFO_RECV)
     ; (async function () {
         let list = sortApp(app, 'groupDecrease')
         for (let i = 0; i < list.length; i++) {
-            let result = await list[i].groupDecrease(c.sub_type, c.time, c.group_id, c.user_id, c.operator_id)
+            let result = await list[i].groupDecrease(c.sub_type, c.time, c.group_id, c.operator_id, c.user_id)
             if (result) {
                 break
             }
@@ -91,11 +91,11 @@ bot.on('notice.group_decrease', (c) => {
     }())
 })
 bot.on('notice.group_increase', (c) => {
-    printTime(`[群成员增加] 类型:${c.sub_type} GroupId:${c.group_id} 操作者QQ:${c.user_id} 加入者QQ:${c.operator_id}`, CQLog.LOG_INFO_RECV)
+    printTime(`[群成员增加] 类型:${c.sub_type} GroupId:${c.group_id} 操作者QQ:${c.operator_id} 加入者QQ:${c.user_id}`, CQLog.LOG_INFO_RECV)
     ; (async function () {
         let list = sortApp(app, 'groupIncrease')
         for (let i = 0; i < list.length; i++) {
-            let result = await list[i].groupIncrease(c.sub_type, c.time, c.group_id, c.user_id, c.operator_id)
+            let result = await list[i].groupIncrease(c.sub_type, c.time, c.group_id, c.operator_id, c.user_id)
             if (result) {
                 break
             }
