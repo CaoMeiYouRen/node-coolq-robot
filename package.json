@@ -17,7 +17,7 @@
         "cglog": "conventional-changelog -p angular -i CHANGELOG.md -s -p"
     },
     "author": "CaoMeiYouRen",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "cq-robot": "^1",
         "cq-websocket": "^2.0.2",
