@@ -39,6 +39,7 @@
         "conventional-changelog-cli": "^2.0.21",
         "cz-conventional-changelog": "^3.0.2",
         "eslint": "^5.16.0",
+        "eslint-utils": "^1.4.1",
         "eslint-config-alloy": "^2.0.4",
         "eslint-plugin-typescript": "^0.14.0",
         "gulp": "^4.0.2",
