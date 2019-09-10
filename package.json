@@ -1,6 +1,6 @@
 {
     "name": "coolq-robot",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "基于http-api、cq-websocket、cq-robot的酷Q机器人封装",
     "main": "index.js",
     "scripts": {
