@@ -7,7 +7,7 @@
         "build": "rimraf dist && tsc && gulp copy",
         "dev": "gulp copy && tsc -w",
         "lint": "eslint src --ext .ts",
-        "lint:fix": "eslint src --fix",
+        "lint:fix": "eslint src --fix --ext .ts",
         "lint:create": "eslint --init",
         "test": "mocha -r ts-node/register test/**/*.test.ts -R nyan",
         "rm": "rimraf node_modules",

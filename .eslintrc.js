@@ -24,8 +24,6 @@ module.exports = {
         }
     },
     plugins: [// 插件
-        'vue',
-        'html'
     ],
     rules: {
         'complexity': 0,
@@ -40,7 +38,7 @@ module.exports = {
         ],
         'linebreak-style': [// 强制使用一致的换行风格
             'error',
-            'windows'
+            'unix'
         ],
         quotes: [// 强制使用一致的反勾号、双引号或单引号double
             'error',

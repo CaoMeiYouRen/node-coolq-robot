@@ -1,8 +1,7 @@
-var gulp = require('gulp')
-var typedoc = require('gulp-typedoc')
-gulp.task('copy', () => {//将json和jsonc文件复制到dist目录下
-    return gulp.src(['src/**/*.jsonc', 'src/**/*.json', '!*.ts'])
-        .pipe(gulp.dest('dist'))
+const gulp = require('gulp')
+const typedoc = require('gulp-typedoc')
+gulp.task('copy', () => {//将其他文件复制到dist目录下
+    return gulp.src(['src/**/*.*', '!src/**/*.ts', '!src/**/*.js']).pipe(gulp.dest('dist'))
 })
 gulp.task('typedoc', () => {
     return gulp

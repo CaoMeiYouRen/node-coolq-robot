@@ -19,7 +19,7 @@ bot.on('ready', () => {
 })
 bot.on('message.private', (event, c, tags) => {
     printTime(`[接收私聊消息] 类型:${c.sub_type} QQId:${c.user_id} msg:${c.message}`, CQLog.LOG_INFO_RECV)
-    ; (async function () {
+    ; (async () => {
         let list = sortApp(app, 'privateMsg')
         for (let i = 0; i < list.length; i++) {
             let result = await list[i].privateMsg(c.sub_type, c.message_id, c.user_id, c.message, c.font)
@@ -27,7 +27,7 @@ bot.on('message.private', (event, c, tags) => {
                 break
             }
         }
-    }())
+    })()
 })
 bot.on('message.group', (event, c, tags) => {
     printTime(`[接收群聊消息] 类型:${c.sub_type} GroupId:${c.group_id} QQId:${c.user_id} msg:${c.message}`, CQLog.LOG_INFO_RECV)
